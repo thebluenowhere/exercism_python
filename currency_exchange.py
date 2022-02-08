@@ -56,8 +56,6 @@ def exchangeable_value(budget, exchange_rate, spread, denomination):
     return bills_exchanged * denomination
       
     
-    
-
 def non_exchangeable_value(budget, exchange_rate, spread, denomination):
     """
 
@@ -68,5 +66,6 @@ def non_exchangeable_value(budget, exchange_rate, spread, denomination):
     :return: int non-exchangeable value.
     """
 
-    
-    pass
+    actual_rate = exchange_rate + (exchange_rate * spread / 100)
+    money_exchanged = exchange_money(budget, actual_rate)
+    return int(money_exchanged - exchangeable_value(budget, exchange_rate, spread, denomination))
